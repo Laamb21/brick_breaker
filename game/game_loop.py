@@ -23,10 +23,7 @@ def create_bricks(rows, cols):
             bricks.append(Brick(x, y, brick_width, brick_height))
     return bricks
 
-def run_game():
-    pygame.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Brick Breaker")
+def run_game(screen):
     clock = pygame.time.Clock()
 
     paddle = Paddle()
