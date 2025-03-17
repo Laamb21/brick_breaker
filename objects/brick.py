@@ -1,7 +1,7 @@
 #objects/brick.py
 
 import pygame
-from settings import BRICK_COLOR
+from settings import RED
 
 class Brick:
     def __init__(self, x, y, width=60, height=20):
@@ -13,4 +13,4 @@ class Brick:
 
     def draw(self, surface):
         if self.visible:
-            pygame.draw.rect(surface, BRICK_COLOR, (self.x, self.y, self.width, self.height))
+            pygame.draw.rect(surface, RED, (self.x, self.y, self.width, self.height))
