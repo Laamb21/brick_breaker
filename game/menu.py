@@ -6,17 +6,33 @@ from settings import WIDTH, HEIGHT, BLACK, WHITE
 
 def show_menu(screen):
     menu_active = True
+    clock = pygame.time.Clock()
+    
     #Create a font object
     font = pygame.font.Font(None, 74)
+    
     #Render the menu text
-    text = font.render("Press Enter to Play", True, WHITE)
-    text_rect = text.get_rect(center=(WIDTH //2, HEIGHT //2))
+    brick_text = font.render("Brick", True, WHITE)
+    brick_text_rect = brick_text.get_rect(center=(WIDTH //2, HEIGHT * 0.20))
+    breaker_text = font.render("Breaker", True, WHITE)
+    breaker_text_rect = breaker_text.get_rect(center=(WIDTH //2, HEIGHT * 0.33))
+
+    #Render button text
+    button_text = font.render("Play", True, WHITE)
+    #Create button rectangle slightly larger than text
+    button_width = button_text.get_width() + 20
+    button_height = button_text.get_height() + 10
+    button_rect = pygame.Rect(0, 0, button_width, button_height)
+    button_rect.center = (WIDTH //2, HEIGHT * 0.75)
 
     while menu_active:
+        clock.tick(60)
         #Fill screen with background color
         screen.fill(BLACK)
         #Blit the menu text
-        screen.blit(text, text_rect)
+        screen.blit(brick_text, brick_text_rect)
+        screen.blit(breaker_text, breaker_text_rect)
+        screen.blit(button_text, button_rect)
         #Update game display
         pygame.display.flip()
 
@@ -29,4 +45,7 @@ def show_menu(screen):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     menu_active = False
-                    
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                if button_rect.collidepoint(mouse_pos):
+                    menu_active = False
