@@ -1,7 +1,7 @@
 #objects/paddle.py 
 
 import pygame
-from settings import WIDTH, HEIGHT, WHITE
+from settings import WIDTH, HEIGHT, SOFT_MINT
 
 class Paddle:
     def __init__(self):
@@ -20,4 +20,4 @@ class Paddle:
         self.x = max(0, min(WIDTH - self.width, self.x))
 
     def draw(self, surface):
-        pygame.draw.rect(surface, WHITE, (self.x, self.y, self.width, self.height))
+        pygame.draw.rect(surface, SOFT_MINT, (self.x, self.y, self.width, self.height))

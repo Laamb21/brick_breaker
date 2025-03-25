@@ -1,7 +1,7 @@
 #objects/ball.py
 
 import pygame
-from settings import WIDTH, HEIGHT, WHITE
+from settings import WIDTH, HEIGHT, WHITE, LIGHT_GREY
 
 class Ball:
     def __init__(self):
@@ -16,7 +16,7 @@ class Ball:
         self.y += self.y_speed
 
     def draw(self, surface):
-        pygame.draw.circle(surface, WHITE, (self.x, self.y), self.radius)
+        pygame.draw.circle(surface, LIGHT_GREY, (self.x, self.y), self.radius)
 
     def reset(self):
         self.x = WIDTH // 2

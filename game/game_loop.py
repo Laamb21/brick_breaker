@@ -2,7 +2,7 @@
 
 import sys
 import pygame
-from settings import WIDTH, HEIGHT, FPS, BLACK
+from settings import WIDTH, HEIGHT, FPS, BLACK, LAVENDER, PASTEL_PINK, BABY_BLUE, LIGHT_YELLOW, MINT_GREEN, SOFT_PEACH
 from objects.paddle import Paddle
 from objects.ball import Ball
 from objects.brick import Brick
@@ -16,11 +16,21 @@ def create_bricks(rows, cols):
     brick_width = 60
     brick_height = 20
 
+    # Define colors for each row of bricks
+    row_colors = [
+        PASTEL_PINK,
+        BABY_BLUE,
+        LIGHT_YELLOW,
+        MINT_GREEN,
+        SOFT_PEACH
+    ]
+
     for row in range(rows):
+        color = row_colors[row % len(row_colors)]
         for col in range(cols):
             x = offset_x + col * (brick_width + padding)
             y = offset_y + row * (brick_height + padding)
-            bricks.append(Brick(x, y, brick_width, brick_height))
+            bricks.append(Brick(x, y, color, brick_width, brick_height))
     return bricks
 
 def run_game(screen):
@@ -55,7 +65,7 @@ def run_game(screen):
             ball.reset()
 
         #Drawing everything on the screen
-        screen.fill(BLACK)
+        screen.fill(LAVENDER)
         paddle.draw(screen)
         ball.draw(screen)
         for brick in bricks:
